@@ -16,23 +16,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="linkColor"/>
+                        <color key="backgroundColor" systemColor="systemGray6Color"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Ana Sayfa" image="house" catalog="system" id="meH-Ih-71U"/>
+                    <tabBarItem key="tabBarItem" title="Ana Sayfa" image="house" catalog="system" selectedImage="house.fill" id="meH-Ih-71U"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1683" y="750"/>
+            <point key="canvasLocation" x="-1683.206106870229" y="750"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Qp4-tg-1Kl">
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="2UT-We-oew" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XCd-Bz-dif">
+                    <navigationItem key="navigationItem" id="TvA-2X-IRe"/>
+                    <tabBar key="tabBar" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="XCd-Bz-dif">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" systemColor="systemIndigoColor"/>
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="6z6-Kq-6h5"/>
@@ -56,7 +60,7 @@
                         <viewLayoutGuide key="safeArea" id="BaO-A1-Mph"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Kategoriler" image="square.grid.2x2" catalog="system" id="n59-m1-IhE"/>
+                    <tabBarItem key="tabBarItem" title="Kategoriler" image="square.grid.2x2" catalog="system" selectedImage="square.grid.2x2.fill" id="n59-m1-IhE"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3eG-sE-ZDl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -72,7 +76,7 @@
                         <viewLayoutGuide key="safeArea" id="2ev-Pm-PhW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Sepetim" image="cart" catalog="system" id="nbS-T0-6UJ"/>
+                    <tabBarItem key="tabBarItem" title="Sepetim" image="cart" catalog="system" selectedImage="cart.fill" id="nbS-T0-6UJ"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n3m-FD-xKr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -88,7 +92,7 @@
                         <viewLayoutGuide key="safeArea" id="MQL-kt-6o3"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Hesabım" image="person" catalog="system" id="d0u-ic-VGY"/>
+                    <tabBarItem key="tabBarItem" title="Hesabım" image="person" catalog="system" selectedImage="person.fill" id="d0u-ic-VGY"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gFo-2z-HJJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -104,7 +108,7 @@
                         <viewLayoutGuide key="safeArea" id="WLY-mo-aBn"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Listelerim" image="heart" catalog="system" id="m8w-Jy-ao8"/>
+                    <tabBarItem key="tabBarItem" title="Listelerim" image="heart" catalog="system" selectedImage="heart.fill" id="m8w-Jy-ao8"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gak-5P-dZp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -113,15 +117,23 @@
     </scenes>
     <resources>
         <image name="cart" catalog="system" width="128" height="102"/>
+        <image name="cart.fill" catalog="system" width="128" height="102"/>
         <image name="heart" catalog="system" width="128" height="107"/>
+        <image name="heart.fill" catalog="system" width="128" height="107"/>
         <image name="house" catalog="system" width="128" height="104"/>
+        <image name="house.fill" catalog="system" width="128" height="104"/>
         <image name="person" catalog="system" width="128" height="121"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
         <image name="square.grid.2x2" catalog="system" width="128" height="114"/>
-        <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
+        <image name="square.grid.2x2.fill" catalog="system" width="128" height="114"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
