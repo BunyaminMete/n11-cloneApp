@@ -46,10 +46,10 @@ class CustomNavigationBar: UIView {
     }
     
     private func applyCornerRadii() {
-        searchContainerView.layer.cornerRadius = 25
-        searchTextField.layer.cornerRadius = 25
+        searchContainerView.layer.cornerRadius = 20
+        searchTextField.layer.cornerRadius = 20
         
-        imageBrandLogoContainer.layer.cornerRadius = 25
+        imageBrandLogoContainer.layer.cornerRadius = 20
         imageBrandLogoContainer.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
     }
     

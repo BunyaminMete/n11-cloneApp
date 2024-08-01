@@ -92,7 +92,7 @@
         <!--Hesabım-->
         <scene sceneID="pcB-rr-OOD">
             <objects>
-                <viewController id="dei-6W-6aU" sceneMemberID="viewController">
+                <viewController id="dei-6W-6aU" customClass="GuestAccountVC" customModule="n11_cloneApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="M0b-2T-l52">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
