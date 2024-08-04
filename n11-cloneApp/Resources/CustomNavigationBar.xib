@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -52,7 +53,7 @@
                                     </constraints>
                                 </view>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="5m2-ni-axY" secondAttribute="bottom" id="4CD-2R-j4C"/>
                                 <constraint firstItem="5m2-ni-axY" firstAttribute="top" secondItem="xXu-wP-haU" secondAttribute="top" id="GYe-zc-Zgv"/>
@@ -93,7 +94,7 @@
                 </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" red="0.3058823645" green="0.20392158630000001" blue="0.6784313917" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color key="backgroundColor" name="purple11"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="cqK-hf-q8s" secondAttribute="trailing" constant="5" id="4ys-cJ-WKD"/>
                 <constraint firstItem="cqK-hf-q8s" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="EOT-Xo-T9k"/>
@@ -116,9 +117,9 @@
         <image name="bell" catalog="system" width="125" height="128"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="svgviewer-output (1)" width="100" height="53"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <namedColor name="purple11">
+            <color red="0.34901961679999999" green="0.25098040700000002" blue="0.71372550729999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <systemColor name="systemTealColor">
             <color red="0.18823529410000001" green="0.69019607839999997" blue="0.78039215689999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

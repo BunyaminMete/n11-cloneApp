@@ -27,9 +27,7 @@ class CustomNavigationBar: UIView {
         applyCornerRadii()
     }
     
-    private func configureUI() {
-        self.backgroundColor = UIColor(hex: "#5D3BBB")
-        
+    private func configureUI() {        
         let searchIcon = UIImage(systemName: "magnifyingglass")?.withConfiguration(UIImage.SymbolConfiguration(weight: .bold))
         searchIconButton.setImage(searchIcon, for: .normal)
         searchIconButton.tintColor = .systemGray

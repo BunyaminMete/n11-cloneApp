@@ -1,0 +1,34 @@
+//
+//  MainMenuModel.swift
+//  n11-cloneApp
+//
+//  Created by Bünyamin Mete on 3.08.2024.
+//
+
+import Foundation
+
+protocol SectionModel {
+    var sectionTitle: String? { get }
+    var itemCount: Int { get }
+    var cellType: MainPageCellType { get }
+    func getItem(at index: Int) -> Any
+}
+
+struct FilterSection: SectionModel {
+    var sectionTitle: String?
+    
+    var filterSectionList: [TopCategoryFilterCellModel]
+    
+    var itemCount: Int {
+        return filterSectionList.count
+    }
+    
+    var cellType: MainPageCellType {
+        return .filterCell
+    }
+    
+    func getItem(at index: Int) -> Any {
+        filterSectionList[index]
+    }
+}
+
