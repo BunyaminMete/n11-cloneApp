@@ -22,58 +22,22 @@ extension MainPageViewModel {
     func generateFilterSection() {
         let filterSectionList: [TopCategoryFilterCellModel] = [
             TopCategoryFilterCellModel(
-            title: "Müzik",
-            imageName: "diamond"
+            title: "Tıklamayan Kalmasın",
+            imageName: "n11-cabuk"
         ),
             TopCategoryFilterCellModel(
-            title: "Eğitim",
-            imageName: "diamond"
+            title: "Kuponlar",
+            imageName: "discount-coupon"
         ),TopCategoryFilterCellModel(
-            title: "Müzik",
-            imageName: "diamond"
+            title: "Yurt Dışından",
+            imageName: "global-delivery"
         ),
             TopCategoryFilterCellModel(
-            title: "Eğitim",
-            imageName: "diamond"
+            title: "Sana Özel",
+            imageName: "for-you"
         ),TopCategoryFilterCellModel(
-            title: "Müzik",
-            imageName: "music"
-        ),
-            TopCategoryFilterCellModel(
-            title: "Eğitim",
-            imageName: "education"
-        ),TopCategoryFilterCellModel(
-            title: "Müzik",
-            imageName: "music"
-        ),
-            TopCategoryFilterCellModel(
-            title: "Eğitim",
-            imageName: "education"
-        ),TopCategoryFilterCellModel(
-            title: "Müzik",
-            imageName: "music"
-        ),
-            TopCategoryFilterCellModel(
-            title: "Eğitim",
-            imageName: "education"
-        ),TopCategoryFilterCellModel(
-            title: "Müzik",
-            imageName: "music"
-        ),
-            TopCategoryFilterCellModel(
-            title: "Eğitim",
-            imageName: "education"
-        ),TopCategoryFilterCellModel(
-            title: "Müzik",
-            imageName: "music"
-        ),
-            TopCategoryFilterCellModel(
-            title: "Eğitim",
-            imageName: "education"
-        ),
-            TopCategoryFilterCellModel(
-            title: "Finans",
-            imageName: "wallet"
+            title: "Siparişlerim",
+            imageName: "my-orders"
         )]
         sectionList.append(FilterSection(filterSectionList: filterSectionList))
     }

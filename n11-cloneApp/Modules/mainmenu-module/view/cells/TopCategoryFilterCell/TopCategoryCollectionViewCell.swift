@@ -34,6 +34,9 @@ class TopCategoryCollectionViewCell: UICollectionViewCell {
     func setup(model: TopCategoryFilterCellModel) {
         TopCategoryImageView.image = UIImage(named: model.imageName)
         TopCategoryLabel.text = model.title
+        if TopCategoryLabel.text == "Tıklamayan Kalmasın" {
+            TopCategoryLabel.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
+        }
         
 
     }
