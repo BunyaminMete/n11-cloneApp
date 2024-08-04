@@ -22,7 +22,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="335" height="51"/>
                             <subviews>
                                 <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yhf-Y7-0fg">
-                                    <rect key="frame" x="80" y="0.0" width="255" height="51"/>
+                                    <rect key="frame" x="86" y="0.0" width="249" height="51"/>
                                     <color key="backgroundColor" systemColor="systemTealColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
@@ -60,7 +60,7 @@
                                 <constraint firstAttribute="bottom" secondItem="Yhf-Y7-0fg" secondAttribute="bottom" id="KMg-2g-ie7"/>
                                 <constraint firstAttribute="bottom" secondItem="C4M-3a-iQV" secondAttribute="bottom" constant="10" id="R3b-ha-rCp"/>
                                 <constraint firstItem="Yhf-Y7-0fg" firstAttribute="top" secondItem="xXu-wP-haU" secondAttribute="top" id="ZJ2-lA-lmO"/>
-                                <constraint firstItem="Yhf-Y7-0fg" firstAttribute="leading" secondItem="5m2-ni-axY" secondAttribute="trailing" id="ZRz-NB-ZQv"/>
+                                <constraint firstItem="Yhf-Y7-0fg" firstAttribute="leading" secondItem="5m2-ni-axY" secondAttribute="trailing" constant="6" id="ZRz-NB-ZQv"/>
                                 <constraint firstItem="5m2-ni-axY" firstAttribute="leading" secondItem="xXu-wP-haU" secondAttribute="leading" id="flt-Q7-XwF"/>
                                 <constraint firstItem="C4M-3a-iQV" firstAttribute="top" secondItem="xXu-wP-haU" secondAttribute="top" constant="10" id="gUF-aP-kRa"/>
                                 <constraint firstAttribute="trailing" secondItem="Yhf-Y7-0fg" secondAttribute="trailing" id="kbR-vs-M6A"/>
@@ -118,7 +118,7 @@
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="svgviewer-output (1)" width="100" height="53"/>
         <namedColor name="purple11">
-            <color red="0.34901961679999999" green="0.25098040700000002" blue="0.71372550729999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.34900000691413879" green="0.25099998712539673" blue="0.71399998664855957" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="systemTealColor">
             <color red="0.18823529410000001" green="0.69019607839999997" blue="0.78039215689999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -7,17 +7,40 @@
 
 import UIKit
 
-final class ViewController: UIViewController {
-    
+final class ViewController: UIViewController, MainPageVC {
     private var mainCollectionView: UICollectionView!
     private let viewModel = MainPageViewModel()
+    private let presenter = MainPagePresenter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .white
+        
+        
+        presenter.view = self
+        let interactor = MainPageInteractor()
+        interactor.presenter = presenter
+        presenter.interactor = interactor
+        
+        
         configureCustomNavigationBar()
         buildCollectionView()
         setCompositionalLayout()
-        self.view.backgroundColor = .white
+        presenter.startSlider()
+    }
+    
+    deinit{
+        presenter.stopSlider()
+    }
+    
+    func numberOfItemsInSliderSection() -> Int {
+        let sectionIndex = 1
+        return mainCollectionView.numberOfItems(inSection: sectionIndex)
+    }
+    
+    func scrollToItem(at index: Int) {
+        let indexPath = IndexPath(item: index, section: 1)
+        mainCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
     
     private func configureCustomNavigationBar(){
@@ -40,6 +63,20 @@ final class ViewController: UIViewController {
                 customNavBar.heightAnchor.constraint(equalToConstant: 120)
             ])
         }
+        
+        let nibLabel = UINib(nibName: "SubLabelCollectionViewCell", bundle: nil)
+        guard let customLabel = nibLabel.instantiate(withOwner: self, options: nil).first as? SubLabelCollectionViewCell else { return }
+        
+        view.addSubview(customLabel)
+        customLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            customLabel.topAnchor.constraint(equalTo: customNavBar.topAnchor, constant: 120),
+            customLabel.leadingAnchor.constraint(equalTo: customNavBar.leadingAnchor),
+            customLabel.trailingAnchor.constraint(equalTo: customNavBar.trailingAnchor),
+            customLabel.heightAnchor.constraint(equalToConstant: 40)
+        ])
+        
     }
 }
 
@@ -57,10 +94,11 @@ extension ViewController {
         mainCollectionView.register(cellClass: TopCategoryCollectionViewCell.self)
         mainCollectionView.register(cellClass: ImageSliderCollectionViewCell.self)
         
+        
         view.addSubview(mainCollectionView)
         mainCollectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            mainCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100), // Custom navigation bar height
+            mainCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 105), // Custom navigation bar height
             mainCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             mainCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             mainCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)

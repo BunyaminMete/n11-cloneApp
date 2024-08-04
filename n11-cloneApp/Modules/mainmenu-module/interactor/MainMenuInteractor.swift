@@ -19,6 +19,31 @@ final class MainPageViewModel {
     }
 }
 
+final class MainPageInteractor {
+    private var sliderTimer: Timer?
+    private var currentIndex = 0
+    weak var presenter: MainPageInteractorOutput?
+
+    func startSliderTimer() {
+        sliderTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(scrollToNextItem), userInfo: nil, repeats: true)
+    }
+    
+    func stopSliderTimer() {
+        sliderTimer?.invalidate()
+        sliderTimer = nil
+    }
+    
+    @objc private func scrollToNextItem() {
+        guard let numberOfItems = presenter?.numberOfItemsInSliderSection(), numberOfItems > 0 else { return }
+        
+        let nextIndex = (currentIndex + 1) % numberOfItems
+        currentIndex = nextIndex
+        presenter?.scrollToItem(at: nextIndex)
+    }
+}
+
+
+
 extension MainPageViewModel {
     func generateFilterSection() {
         let filterSectionList: [TopCategoryFilterCellModel] = [
@@ -45,11 +70,11 @@ extension MainPageViewModel {
     
     func generateSliderSection() {
         let sliderSectionList: [ImageSliderCellModel] = [
-        ImageSliderCellModel(imageName: "advertise1"),
-        ImageSliderCellModel(imageName: "advertise1"),
-        ImageSliderCellModel(imageName: "advertise1"),
-        ImageSliderCellModel(imageName: "advertise1"),
-        ImageSliderCellModel(imageName: "advertise1")
+        ImageSliderCellModel(imageName: "autoslideritem1"),
+        ImageSliderCellModel(imageName: "autoslideritem2"),
+        ImageSliderCellModel(imageName: "autoslideritem3"),
+        ImageSliderCellModel(imageName: "autoslideritem4"),
+        ImageSliderCellModel(imageName: "autoslideritem5")
         ]
         sectionList.append(SliderSection(sliderSectionList: sliderSectionList))
     }

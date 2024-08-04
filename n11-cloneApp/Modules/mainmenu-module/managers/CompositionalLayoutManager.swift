@@ -78,7 +78,7 @@ final class CompositionalLayoutManager {
     private func createHorizontalImageSliderSection() -> NSCollectionLayoutSection {
         
 //        / Yüksekliği 300 olacak ve dikey kaydırılacak bir section oluşturuyoruz
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(180))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(175))
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
         
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
@@ -87,7 +87,7 @@ final class CompositionalLayoutManager {
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 0, bottom: 0, trailing: 0) // Section içindeki boşluklar
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0) // Section içindeki boşluklar
         
         section.orthogonalScrollingBehavior = .paging // Dikey kaydırma davranışı
         

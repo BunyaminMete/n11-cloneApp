@@ -15,7 +15,7 @@ class ImageSliderCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         
         imageSlider.clipsToBounds = true
-        imageSlider.contentMode = .scaleAspectFill
+//        imageSlider.contentMode = .scaleAspectFill
     }
 
     

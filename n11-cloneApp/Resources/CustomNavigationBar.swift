@@ -32,6 +32,12 @@ class CustomNavigationBar: UIView {
         searchIconButton.setImage(searchIcon, for: .normal)
         searchIconButton.tintColor = .systemGray
         
+        let placeholderText = "Ürün, kategori, marka ara"
+        searchTextField.textColor = .black
+        
+        searchTextField.attributedPlaceholder = NSAttributedString(
+            string: placeholderText, attributes: [NSAttributedString.Key.foregroundColor : UIColor.gray]
+        )
         
         if let user = notificationAlertButton {
             user.layer.cornerRadius = 25
