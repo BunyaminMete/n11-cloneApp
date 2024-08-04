@@ -32,3 +32,22 @@ struct FilterSection: SectionModel {
     }
 }
 
+struct SliderSection: SectionModel {
+    var sectionTitle: String?
+    
+    var sliderSectionList: [ImageSliderCellModel]
+    
+    var itemCount: Int {
+        return sliderSectionList.count
+    }
+    
+    var cellType: MainPageCellType{
+        return .imageSliderCell
+    }
+    
+    func getItem(at index: Int) -> Any {
+        sliderSectionList[index]
+    }
+    
+    
+}

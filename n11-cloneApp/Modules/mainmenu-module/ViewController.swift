@@ -55,6 +55,7 @@ extension ViewController {
         
         
         mainCollectionView.register(cellClass: TopCategoryCollectionViewCell.self)
+        mainCollectionView.register(cellClass: ImageSliderCollectionViewCell.self)
         
         view.addSubview(mainCollectionView)
         mainCollectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -76,7 +77,7 @@ extension ViewController {
             return self.layoutSection(for: sectionType)
         }
         layout.register(BackgroundView.self, forDecorationViewOfKind: "background")
-
+        
         mainCollectionView.setCollectionViewLayout(layout, animated: true)
     }
     
@@ -84,6 +85,8 @@ extension ViewController {
         switch cellType {
         case .filterCell:
             return CompositionalLayoutManager.sharedInstance.createLayoutSection(layoutType: .horizontal(isSlider: false))
+        case .imageSliderCell:
+            return CompositionalLayoutManager.sharedInstance.createLayoutSection(layoutType: .horizontalImageSlider)
         default:
             fatalError("Unhandled cell type")
         }
@@ -103,13 +106,22 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         let section = viewModel.getSection(at: indexPath.section)
         let item = section.getItem(at: indexPath.row)
         switch section.cellType {
+            
         case .filterCell:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TopCategoryCollectionViewCell.reuseIdentifier, for: indexPath) as! TopCategoryCollectionViewCell
             if let filterModel = item as? TopCategoryFilterCellModel {
                 cell.setup(model: filterModel)
-//                cell.backgroundColor = .yellow
+                //                cell.backgroundColor = .yellow
             }
             return cell
+            
+        case .imageSliderCell:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageSliderCollectionViewCell.reuseIdentifier, for: indexPath) as! ImageSliderCollectionViewCell
+            if let sliderModel = item as? ImageSliderCellModel {
+                cell.configureSlidedImage(with: sliderModel)
+            }
+            return cell
+            
         default:
             fatalError("Unhandled cell type")
         }
@@ -123,6 +135,8 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         switch section.cellType {
         case .filterCell:
             print("item : \(item as? TopCategoryFilterCellModel)")
+        case .imageSliderCell:
+            print("item : \(item as? ImageSliderCellModel)")
         default:
             fatalError("Unhandled cell type")
         }

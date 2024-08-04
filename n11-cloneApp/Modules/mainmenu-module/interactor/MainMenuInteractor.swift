@@ -13,6 +13,7 @@ final class MainPageViewModel {
     
     init() {
         generateFilterSection()
+        generateSliderSection()
 //        generateSliderSection()
 //        generateMostRecommendedSection()
     }
@@ -40,6 +41,17 @@ extension MainPageViewModel {
             imageName: "my-orders"
         )]
         sectionList.append(FilterSection(filterSectionList: filterSectionList))
+    }
+    
+    func generateSliderSection() {
+        let sliderSectionList: [ImageSliderCellModel] = [
+        ImageSliderCellModel(imageName: "advertise1"),
+        ImageSliderCellModel(imageName: "advertise1"),
+        ImageSliderCellModel(imageName: "advertise1"),
+        ImageSliderCellModel(imageName: "advertise1"),
+        ImageSliderCellModel(imageName: "advertise1")
+        ]
+        sectionList.append(SliderSection(sliderSectionList: sliderSectionList))
     }
     
 //    func generateSliderSection() {
