@@ -11,6 +11,7 @@ enum LayoutType {
     case horizontal(isSlider: Bool)
     case horizontalImageSlider
     case horizontalImageManuelSlider
+    case horizontalProductSlider(hourlyOffer: Bool)
 }
 
 final class CompositionalLayoutManager {
@@ -26,6 +27,8 @@ final class CompositionalLayoutManager {
             return createHorizontalImageSliderSection()
         case .horizontalImageManuelSlider:
             return createHorizontalImageManuelSliderSection()
+        case .horizontalProductSlider(let hourlyOffer):
+            return createHorizontalProductSliderSection(hourlyOffer: hourlyOffer)
         }
     }
     
@@ -112,6 +115,26 @@ final class CompositionalLayoutManager {
         return section
         
     }
+    
+    private func createHorizontalProductSliderSection(hourlyOffer: Bool) -> NSCollectionLayoutSection {
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.36), heightDimension: .absolute(290))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+        
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 0)
+        
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 15, leading: 0, bottom: 15, trailing: 0)
+        
+        section.orthogonalScrollingBehavior = .continuous
+        section.decorationItems = [
+            NSCollectionLayoutDecorationItem.background(elementKind: "lightbackground")
+        ]
+        
+        return section
+    }
 }
 
 
@@ -128,5 +151,21 @@ class BackgroundView: UICollectionReusableView {
     
     private func setupView() {
         backgroundColor = UIColor(named: "purple11") // TopCategoryFilterCell setup for bgcolor
+    }
+}
+
+class BackgroundLightView: UICollectionReusableView {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupView()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setupView()
+    }
+    
+    private func setupView() {
+        backgroundColor = UIColor(named: "lightpurple11") // TopCategoryFilterCell setup for bgcolor
     }
 }

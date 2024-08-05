@@ -70,3 +70,23 @@ struct ManuelSliderSection : SectionModel {
     
     
 }
+
+struct ProductCardSection : SectionModel {
+    var sectionTitle: String?
+    
+    var productCardSectionList: [ProductCardCellModel]
+    
+    var itemCount: Int {
+        return productCardSectionList.count
+    }
+    
+    var cellType: MainPageCellType {
+        return .productSliderCell
+    }
+    
+    func getItem(at index: Int) -> Any {
+        productCardSectionList[index]
+    }
+    
+    
+}

@@ -29,7 +29,7 @@ class CategoryCollectionView: UIView {
     }
     
     private func setupCollectionView() {
-        let layout = CompositionalLayoutManagerVC.sharedInstance.createLayoutSection()
+        let layout = CompositionalLayoutManagerCV.sharedInstance.createLayoutSection()
         categoryCollectionView.collectionViewLayout = UICollectionViewCompositionalLayout(section: layout)
         
         let nib = UINib(nibName: "CategoryCollectionViewCell", bundle: nil)

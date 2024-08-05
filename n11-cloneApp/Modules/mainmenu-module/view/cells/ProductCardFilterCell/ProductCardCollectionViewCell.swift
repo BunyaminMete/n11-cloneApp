@@ -13,21 +13,42 @@ class ProductCardCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var ProductCardContainerView: UIView!
     @IBOutlet weak var ProductCardImageView: UIImageView!
     @IBOutlet weak var ProductCardLabel: UILabel!
+    @IBOutlet weak var freeShipmentLabel: UILabel!
+    @IBOutlet weak var productCardPriceLabel: UILabel!
+    @IBOutlet weak var productCardImageContainer: UIView!
+    @IBOutlet weak var productCardPriceLabelContainer: UIView!
+    @IBOutlet weak var productCardDescriptionContainer: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        configureUI()
+        
+        
+        productCardPriceLabel.textColor = .black
+        productCardPriceLabel.font =  UIFont.systemFont(ofSize: 12, weight: .black
+        )
+        productCardPriceLabel.text = "100 TL"
+        
+        productCardImageContainer.backgroundColor = .clear
+        productCardDescriptionContainer.backgroundColor = .clear
+        productCardPriceLabelContainer.backgroundColor = .clear
+        
+        ProductCardLabel.numberOfLines = 2
+        ProductCardLabel.font = UIFont.systemFont(ofSize: 13)
+        ProductCardLabel.textColor = .black
+        
+        freeShipmentLabel.textAlignment = .center
+        freeShipmentLabel.text = "ÜCRETSİZ KARGO"
+        freeShipmentLabel.backgroundColor = UIColor(white: 0.5, alpha: 0.1)
+        freeShipmentLabel.textColor = UIColor(named: "purple11")
+        freeShipmentLabel.font = UIFont.systemFont(ofSize: 10, weight: .black)
     }
-
     
-    private func configureUI() {
+    
+    func configureProductCard(with model: ProductCardCellModel) {
         ProductCardContainerView.layer.cornerRadius = 15
-        ProductCardContainerView.backgroundColor = UIColor(named: "purple11")
-//        ProductCardImageView.image = UIImage(named: "n11")
-        
-        
-//        ProductCardLabel.textColor = .white
-//        ProductCardLabel.text = "Kuponlar"
+        ProductCardContainerView.backgroundColor = .white
+        ProductCardImageView.image = UIImage(named: model.productImage)
+        ProductCardLabel.text = model.productTitle
         
     }
 }

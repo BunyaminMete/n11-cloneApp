@@ -15,6 +15,7 @@ final class MainPageViewModel {
         generateFilterSection()
         generateSliderSection()
         generateManuelSliderSection()
+        generateProductCardSection()
     }
 }
 
@@ -88,6 +89,16 @@ extension MainPageViewModel {
             ImageManuelSliderCellModel(imageName: "manuelbanner4")
         ]
         sectionList.append(ManuelSliderSection(manuelSliderSectionList: manuelSliderSectionList))
+    }
+    
+    func generateProductCardSection() {
+        let productCardSectionList: [ProductCardCellModel] = [
+            ProductCardCellModel(productImage: "product1", productTitle: "Samsung Monitör", productRate: false, productPrice: 30, freeShipment: false),
+            ProductCardCellModel(productImage: "product2", productTitle: "Telefon", productRate: false, productPrice: 30, freeShipment: false),
+            ProductCardCellModel(productImage: "product1", productTitle: "Beyzbol sopası ile dünya haritası", productRate: false, productPrice: 30, freeShipment: false),
+            ProductCardCellModel(productImage: "product1", productTitle: "Beyzbol sopası ile dünya haritası", productRate: false, productPrice: 30, freeShipment: false)
+        ]
+        sectionList.append(ProductCardSection(productCardSectionList: productCardSectionList))
     }
     
     func getSectionsCount() -> Int {

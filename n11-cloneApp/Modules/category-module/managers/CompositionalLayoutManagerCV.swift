@@ -7,9 +7,9 @@
 
 import UIKit
 
-class CompositionalLayoutManagerVC {
+class CompositionalLayoutManagerCV {
     
-    static let sharedInstance = CompositionalLayoutManagerVC()
+    static let sharedInstance = CompositionalLayoutManagerCV()
     
     func createLayoutSection() -> NSCollectionLayoutSection {
         // Item boyutu (her hücrenin genişliği %25 ve yüksekliği sabit)

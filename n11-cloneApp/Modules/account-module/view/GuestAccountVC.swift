@@ -9,6 +9,14 @@ import UIKit
 
 class GuestAccountVC: UIViewController {
     
+    let titleLabel = UILabel()
+    let separator = UIView()
+    let contentView = UIView()
+    let multilineLabel = UILabel()
+    let signUpButton = UIButton(type: .system)
+    let loginButton = UIButton(type: .system)
+    let separatorSecond = UIView()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
@@ -33,7 +41,6 @@ class GuestAccountVC: UIViewController {
             navigationBar.heightAnchor.constraint(equalToConstant: 120)
         ])
         // MARK: Navigation Label
-        let titleLabel = UILabel()
         titleLabel.text = "Hesabım"
         titleLabel.textColor = .black
         titleLabel.textAlignment = .center
@@ -49,7 +56,6 @@ class GuestAccountVC: UIViewController {
         ])
         
         // MARK: First Seperator
-        let separator = UIView()
         separator.backgroundColor = .systemGray
         separator.alpha = 0.1
         separator.translatesAutoresizingMaskIntoConstraints = false
@@ -63,7 +69,6 @@ class GuestAccountVC: UIViewController {
         ])
         
         // MARK: - UIView for Authentication
-        let contentView = UIView()
         contentView.translatesAutoresizingMaskIntoConstraints = false
         contentView.backgroundColor = .white
         view.addSubview(contentView)
@@ -74,8 +79,7 @@ class GuestAccountVC: UIViewController {
             contentView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             contentView.heightAnchor.constraint(equalToConstant: 180)
         ])
-        
-        let multilineLabel = UILabel()
+       
         multilineLabel.numberOfLines = 0
         multilineLabel.text = "Sana özel kampanyalardan & kuponlardan yararlanmak ve siparişlerinin durumunu takip etmek için giriş yap."
         multilineLabel.textColor = .black
@@ -93,7 +97,7 @@ class GuestAccountVC: UIViewController {
         let hexColorPurple = UIColor(hex: "5D3BBB")
         
         // MARK: UIButtons
-        let signUpButton = UIButton(type: .system)
+       
         signUpButton.setTitle("Üye Ol", for: .normal)
         signUpButton.translatesAutoresizingMaskIntoConstraints = false
         signUpButton.tintColor = hexColorPurple
@@ -104,7 +108,7 @@ class GuestAccountVC: UIViewController {
         
         contentView.addSubview(signUpButton)
         
-        let loginButton = UIButton(type: .system)
+        
         loginButton.setTitle("Giriş Yap", for: .normal)
         loginButton.translatesAutoresizingMaskIntoConstraints = false
         loginButton.backgroundColor = UIColor(named: "purple11")
@@ -130,8 +134,7 @@ class GuestAccountVC: UIViewController {
         
         
         // MARK: - Second Seperator
-        
-        let separatorSecond = UIView()
+       
         separatorSecond.backgroundColor = .systemGray
         separatorSecond.alpha = 0.1
         separatorSecond.translatesAutoresizingMaskIntoConstraints = false
@@ -146,7 +149,9 @@ class GuestAccountVC: UIViewController {
         
         // MARK: Help Panel
         
-
-        
     }
+    
+    
+    
+    
 }

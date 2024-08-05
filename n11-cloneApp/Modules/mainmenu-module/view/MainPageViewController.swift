@@ -92,6 +92,7 @@ extension MainPageViewController {
         mainCollectionView.register(cellClass: TopCategoryCollectionViewCell.self)
         mainCollectionView.register(cellClass: ImageSliderCollectionViewCell.self)
         mainCollectionView.register(cellClass: ManuelSliderCollectionViewCell.self)
+        mainCollectionView.register(cellClass: ProductCardCollectionViewCell.self)
         
         
         
@@ -115,6 +116,7 @@ extension MainPageViewController {
             return self.layoutSection(for: sectionType)
         }
         layout.register(BackgroundView.self, forDecorationViewOfKind: "background")
+        layout.register(BackgroundLightView.self, forDecorationViewOfKind: "lightbackground")
         
         mainCollectionView.setCollectionViewLayout(layout, animated: true)
     }
@@ -129,6 +131,9 @@ extension MainPageViewController {
             
         case .imageManuelSliderCell:
             return CompositionalLayoutManager.sharedInstance.createLayoutSection(layoutType: .horizontalImageManuelSlider)
+            
+        case .productSliderCell:
+            return CompositionalLayoutManager.sharedInstance.createLayoutSection(layoutType: .horizontalProductSlider(hourlyOffer: true))
             
         default:
             fatalError("Unhandled cell type")
@@ -172,6 +177,13 @@ extension MainPageViewController: UICollectionViewDelegate, UICollectionViewData
             }
             return cell
             
+        case .productSliderCell:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCardCollectionViewCell.reuseIdentifier, for: indexPath) as! ProductCardCollectionViewCell
+            if let productSliderModel = item as? ProductCardCellModel {
+                cell.configureProductCard(with: productSliderModel)
+            }
+            return cell
+            
         default:
             fatalError("Unhandled cell type")
         }
@@ -189,6 +201,8 @@ extension MainPageViewController: UICollectionViewDelegate, UICollectionViewData
             print("item : \(item as? ImageSliderCellModel)")
         case .imageManuelSliderCell:
             print("item : \(item as? ImageManuelSliderCellModel)")
+        case .productSliderCell:
+            print("item : \(item as? ProductCardCellModel)")
         default:
             fatalError("Unhandled cell type")
         }

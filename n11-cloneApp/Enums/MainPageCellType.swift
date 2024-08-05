@@ -12,5 +12,6 @@ enum MainPageCellType {
     case filterCell
     case imageSliderCell
     case imageManuelSliderCell
+    case productSliderCell
     case nothing
 }
