@@ -15,7 +15,7 @@ class GuestAccountVC: UIViewController {
     }
     
     private func configureUI() {
-        // MARK: Navigation Bar
+        // MARK:  - Navigation Bar
         let navigationBar = UINavigationBar()
         navigationBar.translatesAutoresizingMaskIntoConstraints = false
         navigationBar.overrideUserInterfaceStyle = .light
@@ -62,7 +62,7 @@ class GuestAccountVC: UIViewController {
             separator.heightAnchor.constraint(equalToConstant: 8)
         ])
         
-        // MARK: UIView for Authentication
+        // MARK: - UIView for Authentication
         let contentView = UIView()
         contentView.translatesAutoresizingMaskIntoConstraints = false
         contentView.backgroundColor = .white
@@ -129,7 +129,7 @@ class GuestAccountVC: UIViewController {
         ])
         
         
-        // MARK: Second Seperator
+        // MARK: - Second Seperator
         
         let separatorSecond = UIView()
         separatorSecond.backgroundColor = .systemGray

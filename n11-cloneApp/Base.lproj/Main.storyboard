@@ -53,7 +53,7 @@
         <!--Kategoriler-->
         <scene sceneID="3un-Z2-30m">
             <objects>
-                <viewController id="6p1-iP-4Kz" sceneMemberID="viewController">
+                <viewController id="6p1-iP-4Kz" customClass="CategoryPageVC" customModule="n11_cloneApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4bV-Zd-94K">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

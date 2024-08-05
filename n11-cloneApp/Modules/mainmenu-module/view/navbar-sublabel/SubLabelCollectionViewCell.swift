@@ -10,6 +10,7 @@ import UIKit
 class SubLabelCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var subLabel: UILabel!
+    @IBOutlet weak var subLabelContainerView: UIView!
     @IBOutlet weak var mergeLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,6 +21,8 @@ class SubLabelCollectionViewCell: UICollectionViewCell {
         mergeLabel.text = "fırsatları kaçırma!"
         mergeLabel.textColor = .black
         mergeLabel.font = UIFont.systemFont(ofSize: 13, weight: .bold)
+
+
         
         
     }

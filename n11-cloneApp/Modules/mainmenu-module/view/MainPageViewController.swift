@@ -52,8 +52,6 @@ final class MainPageViewController: UIViewController, MainPageVC{
         
         view.addSubview(customNavBar)
         
-        
-        
         if let superview = view.superview {
             customNavBar.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([

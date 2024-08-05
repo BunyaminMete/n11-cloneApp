@@ -55,6 +55,7 @@
             <connections>
                 <outlet property="mergeLabel" destination="i4Y-Gr-jkd" id="LKZ-5h-hhb"/>
                 <outlet property="subLabel" destination="fFr-Lf-m59" id="HKJ-wh-RXL"/>
+                <outlet property="subLabelContainerView" destination="NCT-g6-U6O" id="ZFE-GZ-fpI"/>
             </connections>
             <point key="canvasLocation" x="325.19083969465646" y="19.718309859154932"/>
         </collectionViewCell>

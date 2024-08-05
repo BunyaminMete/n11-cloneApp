@@ -11,3 +11,8 @@ protocol MainPageInteractorOutput: AnyObject {
     func numberOfItemsInSliderSection() -> Int
     func scrollToItem(at index: Int)
 }
+
+protocol MainPageVC: AnyObject {
+    func numberOfItemsInSliderSection() -> Int
+    func scrollToItem(at index: Int)
+}

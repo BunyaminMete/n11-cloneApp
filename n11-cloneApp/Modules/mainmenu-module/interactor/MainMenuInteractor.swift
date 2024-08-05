@@ -44,7 +44,7 @@ final class MainPageInteractor {
 }
 
 
-//MARK: - MainPageViewModel Extensions
+//MARK: - MainPageViewModel Extensions & Model Definitions
 extension MainPageViewModel {
     func generateFilterSection() {
         let filterSectionList: [TopCategoryFilterCellModel] = [
