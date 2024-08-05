@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ViewController: UIViewController, MainPageVC {
+final class MainPageViewController: UIViewController, MainPageVC{
     private var mainCollectionView: UICollectionView!
     private let viewModel = MainPageViewModel()
     private let presenter = MainPagePresenter()
@@ -80,7 +80,7 @@ final class ViewController: UIViewController, MainPageVC {
     }
 }
 
-extension ViewController {
+extension MainPageViewController {
     func buildCollectionView() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -93,6 +93,8 @@ extension ViewController {
         
         mainCollectionView.register(cellClass: TopCategoryCollectionViewCell.self)
         mainCollectionView.register(cellClass: ImageSliderCollectionViewCell.self)
+        mainCollectionView.register(cellClass: ManuelSliderCollectionViewCell.self)
+        
         
         
         view.addSubview(mainCollectionView)
@@ -123,15 +125,20 @@ extension ViewController {
         switch cellType {
         case .filterCell:
             return CompositionalLayoutManager.sharedInstance.createLayoutSection(layoutType: .horizontal(isSlider: false))
+            
         case .imageSliderCell:
             return CompositionalLayoutManager.sharedInstance.createLayoutSection(layoutType: .horizontalImageSlider)
+            
+        case .imageManuelSliderCell:
+            return CompositionalLayoutManager.sharedInstance.createLayoutSection(layoutType: .horizontalImageManuelSlider)
+            
         default:
             fatalError("Unhandled cell type")
         }
     }
 }
 
-extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension MainPageViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         viewModel.getSectionsCount()
     }
@@ -149,7 +156,6 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TopCategoryCollectionViewCell.reuseIdentifier, for: indexPath) as! TopCategoryCollectionViewCell
             if let filterModel = item as? TopCategoryFilterCellModel {
                 cell.setup(model: filterModel)
-                //                cell.backgroundColor = .yellow
             }
             return cell
             
@@ -157,6 +163,14 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageSliderCollectionViewCell.reuseIdentifier, for: indexPath) as! ImageSliderCollectionViewCell
             if let sliderModel = item as? ImageSliderCellModel {
                 cell.configureSlidedImage(with: sliderModel)
+            }
+            return cell
+            
+        case .imageManuelSliderCell:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ManuelSliderCollectionViewCell.reuseIdentifier, for: indexPath) as!
+            ManuelSliderCollectionViewCell
+            if let manuelSliderModel = item as? ImageManuelSliderCellModel {
+                cell.configureManuelSlider(with: manuelSliderModel)
             }
             return cell
             
@@ -175,6 +189,8 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
             print("item : \(item as? TopCategoryFilterCellModel)")
         case .imageSliderCell:
             print("item : \(item as? ImageSliderCellModel)")
+        case .imageManuelSliderCell:
+            print("item : \(item as? ImageManuelSliderCellModel)")
         default:
             fatalError("Unhandled cell type")
         }

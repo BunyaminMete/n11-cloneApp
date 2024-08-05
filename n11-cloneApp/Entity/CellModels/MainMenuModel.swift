@@ -49,5 +49,24 @@ struct SliderSection: SectionModel {
         sliderSectionList[index]
     }
     
+}
+
+struct ManuelSliderSection : SectionModel {
+    var sectionTitle: String?
+    
+    var manuelSliderSectionList: [ImageManuelSliderCellModel]
+    
+    var itemCount: Int {
+        return manuelSliderSectionList.count
+    }
+    
+    var cellType: MainPageCellType {
+        return .imageManuelSliderCell
+    }
+    
+    func getItem(at index: Int) -> Any {
+        manuelSliderSectionList[index]
+    }
+    
     
 }

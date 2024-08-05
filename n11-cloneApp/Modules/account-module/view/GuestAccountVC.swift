@@ -18,7 +18,8 @@ class GuestAccountVC: UIViewController {
         // MARK: Navigation Bar
         let navigationBar = UINavigationBar()
         navigationBar.translatesAutoresizingMaskIntoConstraints = false
-        navigationBar.backgroundColor = .lightGray
+        navigationBar.overrideUserInterfaceStyle = .light
+
         
         let navItem = UINavigationItem()
         navigationBar.setItems([navItem], animated: false)
@@ -34,13 +35,14 @@ class GuestAccountVC: UIViewController {
         // MARK: Navigation Label
         let titleLabel = UILabel()
         titleLabel.text = "Hesabım"
+        titleLabel.textColor = .black
         titleLabel.textAlignment = .center
         titleLabel.font = UIFont.boldSystemFont(ofSize: 18)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         navigationBar.addSubview(titleLabel)
         
         NSLayoutConstraint.activate([
-            titleLabel.bottomAnchor.constraint(equalTo: navigationBar.bottomAnchor, constant: -20),
+            titleLabel.bottomAnchor.constraint(equalTo: navigationBar.bottomAnchor, constant: -12),
             titleLabel.leadingAnchor.constraint(equalTo: navigationBar.leadingAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: navigationBar.trailingAnchor),
             titleLabel.centerXAnchor.constraint(equalTo: navigationBar.centerXAnchor)
@@ -56,17 +58,18 @@ class GuestAccountVC: UIViewController {
         NSLayoutConstraint.activate([
             separator.leadingAnchor.constraint(equalTo: navigationBar.leadingAnchor),
             separator.trailingAnchor.constraint(equalTo: navigationBar.trailingAnchor),
-            separator.bottomAnchor.constraint(equalTo: navigationBar.bottomAnchor),
+            separator.bottomAnchor.constraint(equalTo: navigationBar.bottomAnchor, constant: 8),
             separator.heightAnchor.constraint(equalToConstant: 8)
         ])
         
         // MARK: UIView for Authentication
         let contentView = UIView()
         contentView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.backgroundColor = .white
         view.addSubview(contentView)
         
         NSLayoutConstraint.activate([
-            contentView.topAnchor.constraint(equalTo: separator.bottomAnchor, constant: 5),
+            contentView.topAnchor.constraint(equalTo: separator.bottomAnchor, constant: 0),
             contentView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             contentView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             contentView.heightAnchor.constraint(equalToConstant: 180)
@@ -75,6 +78,7 @@ class GuestAccountVC: UIViewController {
         let multilineLabel = UILabel()
         multilineLabel.numberOfLines = 0
         multilineLabel.text = "Sana özel kampanyalardan & kuponlardan yararlanmak ve siparişlerinin durumunu takip etmek için giriş yap."
+        multilineLabel.textColor = .black
         multilineLabel.font = UIFont.boldSystemFont(ofSize: 14)
         multilineLabel.textAlignment = .left
         multilineLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -136,7 +140,7 @@ class GuestAccountVC: UIViewController {
         NSLayoutConstraint.activate([
             separatorSecond.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             separatorSecond.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            separatorSecond.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            separatorSecond.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 8),
             separatorSecond.heightAnchor.constraint(equalToConstant: 8) // Separator yüksekliği
         ])
         

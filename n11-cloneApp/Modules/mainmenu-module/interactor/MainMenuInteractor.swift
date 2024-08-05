@@ -14,18 +14,19 @@ final class MainPageViewModel {
     init() {
         generateFilterSection()
         generateSliderSection()
-//        generateSliderSection()
-//        generateMostRecommendedSection()
+        generateManuelSliderSection()
     }
 }
+
+// MARK: - Slider timer events
 
 final class MainPageInteractor {
     private var sliderTimer: Timer?
     private var currentIndex = 0
     weak var presenter: MainPageInteractorOutput?
-
+    
     func startSliderTimer() {
-        sliderTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(scrollToNextItem), userInfo: nil, repeats: true)
+        sliderTimer = Timer.scheduledTimer(timeInterval: 4.0, target: self, selector: #selector(scrollToNextItem), userInfo: nil, repeats: true)
     }
     
     func stopSliderTimer() {
@@ -43,108 +44,51 @@ final class MainPageInteractor {
 }
 
 
-
+//MARK: - MainPageViewModel Extensions
 extension MainPageViewModel {
     func generateFilterSection() {
         let filterSectionList: [TopCategoryFilterCellModel] = [
             TopCategoryFilterCellModel(
-            title: "Tıklamayan Kalmasın",
-            imageName: "n11-cabuk"
-        ),
+                title: "Tıklamayan Kalmasın",
+                imageName: "n11-cabuk"
+            ),
             TopCategoryFilterCellModel(
-            title: "Kuponlar",
-            imageName: "discount-coupon"
-        ),TopCategoryFilterCellModel(
-            title: "Yurt Dışından",
-            imageName: "global-delivery"
-        ),
+                title: "Kuponlar",
+                imageName: "discount-coupon"
+            ),TopCategoryFilterCellModel(
+                title: "Yurt Dışından",
+                imageName: "global-delivery"
+            ),
             TopCategoryFilterCellModel(
-            title: "Sana Özel",
-            imageName: "for-you"
-        ),TopCategoryFilterCellModel(
-            title: "Siparişlerim",
-            imageName: "my-orders"
-        )]
+                title: "Sana Özel",
+                imageName: "for-you"
+            ),TopCategoryFilterCellModel(
+                title: "Siparişlerim",
+                imageName: "my-orders"
+            )]
         sectionList.append(FilterSection(filterSectionList: filterSectionList))
     }
     
     func generateSliderSection() {
         let sliderSectionList: [ImageSliderCellModel] = [
-        ImageSliderCellModel(imageName: "autoslideritem1"),
-        ImageSliderCellModel(imageName: "autoslideritem2"),
-        ImageSliderCellModel(imageName: "autoslideritem3"),
-        ImageSliderCellModel(imageName: "autoslideritem4"),
-        ImageSliderCellModel(imageName: "autoslideritem5")
+            ImageSliderCellModel(imageName: "autoslideritem1"),
+            ImageSliderCellModel(imageName: "autoslideritem2"),
+            ImageSliderCellModel(imageName: "autoslideritem3"),
+            ImageSliderCellModel(imageName: "autoslideritem4"),
+            ImageSliderCellModel(imageName: "autoslideritem5")
         ]
         sectionList.append(SliderSection(sliderSectionList: sliderSectionList))
     }
     
-//    func generateSliderSection() {
-//        var sliderList: [SliderCellModel] = [
-//        SliderCellModel(
-//            title: "OlMAZSA OLMAZLAR",
-//            subTitle: "Snapchat",
-//            description: "Yaşadığın Anı Paylaş",
-//            imageName: "snapchat",
-//            isAppInstalled: true
-//        ),
-//        SliderCellModel(
-//            title: "NE IZLEMELI",
-//            subTitle: "YouTube",
-//            description: "Tüm dünyada izlenenleri keşfet",
-//            imageName: "youtube",
-//            isAppInstalled: false
-//        ),
-//        SliderCellModel(
-//            title: "FORMA GIR",
-//            subTitle: "Adidas",
-//            description: "Antrenman Planını Seç",
-//            imageName: "adidas",
-//            isAppInstalled: true
-//        )]
-//        sectionList.append(SliderSection(sliderList: sliderList))
-//    }
-//    
-//    func generateMostRecommendedSection() {
-//        var mostRecommendedList: [MostRecommendedCellModel] = [
-//        MostRecommendedCellModel(
-//            imageName: "snapchat",
-//            title: "Snapchat",
-//            description: "Anı Paylaş",
-//            isAppInstalled: true
-//        ),
-//        MostRecommendedCellModel(
-//            imageName: "youtube",
-//            title: "YouTube",
-//            description: "Tüm Dünyada İzlenenleri Keşfet",
-//            isAppInstalled: false
-//        ),
-//        MostRecommendedCellModel(
-//            imageName: "adidas",
-//            title: "Adidas",
-//            description: "Antrenman Programını Ayarla",
-//            isAppInstalled: true
-//        ),
-//        MostRecommendedCellModel(
-//            imageName: "whatsapp",
-//            title: "WhatsApp",
-//            description: "WhatsApp Açıklaması",
-//            isAppInstalled: true
-//        ),
-//        MostRecommendedCellModel(
-//            imageName: "telegram",
-//            title: "Telegram",
-//            description: "Telegram Açıklaması",
-//            isAppInstalled: true
-//        ),
-//        MostRecommendedCellModel(
-//            imageName: "twitter",
-//            title: "Twitter",
-//            description: "Twitter Açıklaması",
-//            isAppInstalled: false
-//        )]
-//        sectionList.append(MostRecommendedSection(mostRecommendedList: mostRecommendedList))
-//    }
+    func generateManuelSliderSection(){
+        let manuelSliderSectionList: [ImageManuelSliderCellModel] = [
+            ImageManuelSliderCellModel(imageName: "manuelbanner1"),
+            ImageManuelSliderCellModel(imageName: "manuelbanner2"),
+            ImageManuelSliderCellModel(imageName: "manuelbanner3"),
+            ImageManuelSliderCellModel(imageName: "manuelbanner4")
+        ]
+        sectionList.append(ManuelSliderSection(manuelSliderSectionList: manuelSliderSectionList))
+    }
     
     func getSectionsCount() -> Int {
         return sectionList.count

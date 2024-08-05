@@ -11,23 +11,23 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="TopCategoryCollectionViewCell" customModule="n11_cloneApp" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="192" height="126"/>
+            <rect key="frame" x="0.0" y="0.0" width="192" height="142"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="192" height="126"/>
+                <rect key="frame" x="0.0" y="0.0" width="192" height="142"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b3p-ba-yTu">
-                        <rect key="frame" x="0.0" y="0.0" width="192" height="126"/>
+                        <rect key="frame" x="0.0" y="0.0" width="192" height="142"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F3a-RZ-Gu2">
-                                <rect key="frame" x="20" y="20" width="152" height="86"/>
+                                <rect key="frame" x="20" y="20" width="152" height="102"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cXb-OF-hMJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="152" height="86"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="152" height="102"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="music" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mSj-uK-1DA">
-                                                <rect key="frame" x="0.0" y="0.0" width="152" height="86"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="music" translatesAutoresizingMaskIntoConstraints="NO" id="mSj-uK-1DA">
+                                                <rect key="frame" x="0.0" y="0.0" width="152" height="102"/>
                                             </imageView>
                                         </subviews>
                                         <constraints>
@@ -46,7 +46,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DB6-GF-1Ms">
-                                <rect key="frame" x="0.0" y="105" width="192" height="21"/>
+                                <rect key="frame" x="0.0" y="121" width="192" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -72,13 +72,13 @@
                 <constraint firstAttribute="trailing" secondItem="b3p-ba-yTu" secondAttribute="trailing" id="RBp-6K-MeF"/>
                 <constraint firstAttribute="bottom" secondItem="b3p-ba-yTu" secondAttribute="bottom" id="jbW-uE-l3c"/>
             </constraints>
-            <size key="customSize" width="192" height="126"/>
+            <size key="customSize" width="192" height="142"/>
             <connections>
                 <outlet property="TopCategoryContainerView" destination="cXb-OF-hMJ" id="UAM-ue-KLd"/>
                 <outlet property="TopCategoryImageView" destination="mSj-uK-1DA" id="Hgk-U0-0cU"/>
                 <outlet property="TopCategoryLabel" destination="DB6-GF-1Ms" id="6sE-aR-93v"/>
             </connections>
-            <point key="canvasLocation" x="132.82442748091603" y="30.281690140845072"/>
+            <point key="canvasLocation" x="132.82442748091603" y="35.91549295774648"/>
         </collectionViewCell>
     </objects>
     <resources>

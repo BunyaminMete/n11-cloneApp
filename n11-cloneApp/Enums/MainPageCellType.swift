@@ -11,5 +11,6 @@ import Foundation
 enum MainPageCellType {
     case filterCell
     case imageSliderCell
-    case mostRecommendedCell
+    case imageManuelSliderCell
+    case nothing
 }

@@ -10,7 +10,7 @@ import UIKit
 enum LayoutType {
     case horizontal(isSlider: Bool)
     case horizontalImageSlider
-    //    case normal(headerIdentifier: String?)
+    case horizontalImageManuelSlider
 }
 
 final class CompositionalLayoutManager {
@@ -24,8 +24,8 @@ final class CompositionalLayoutManager {
             return createHorizontalSection(isSlider: isSlider)
         case .horizontalImageSlider:
             return createHorizontalImageSliderSection()
-            //        case .normal(let headerIdentifier):
-            //            return createNormalSection(headerIdentifier: headerIdentifier)
+        case .horizontalImageManuelSlider:
+            return createHorizontalImageManuelSliderSection()
         }
     }
     
@@ -77,47 +77,41 @@ final class CompositionalLayoutManager {
     
     private func createHorizontalImageSliderSection() -> NSCollectionLayoutSection {
         
-//        / Yüksekliği 300 olacak ve dikey kaydırılacak bir section oluşturuyoruz
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(175))
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
         
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0) // Öğeler arasındaki boşluklar
+        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
         
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0) // Section içindeki boşluklar
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
         
-        section.orthogonalScrollingBehavior = .paging // Dikey kaydırma davranışı
+        section.orthogonalScrollingBehavior = .paging
         
         return section
         
     }
     
-    
-    
-    //    private func createNormalSection(headerIdentifier: String?) -> NSCollectionLayoutSection {
-    //        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(90))
-    //        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-    //
-    //        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1) , heightDimension: .absolute(270))
-    //        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
-    //
-    //        group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15)
-    //
-    //        let section = NSCollectionLayoutSection(group: group)
-    //        section.orthogonalScrollingBehavior = .groupPaging
-    //
-    //        if let headerIdentifier = headerIdentifier, headerIdentifier != "" {
-    //            section.boundarySupplementaryItems = [
-    //                .init(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(50)), elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
-    //            ]
-    //        }
-    //        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 15, bottom: 40, trailing: 15)
-    //
-    //        return section
-    //    }
+    private func createHorizontalImageManuelSliderSection() -> NSCollectionLayoutSection {
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.95), heightDimension: .absolute(100))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+        
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0)
+        
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
+        
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 0, trailing: 20)
+        
+        section.orthogonalScrollingBehavior = .paging
+        
+        return section
+        
+    }
 }
 
 
@@ -133,6 +127,6 @@ class BackgroundView: UICollectionReusableView {
     }
     
     private func setupView() {
-        backgroundColor = UIColor(named: "purple11") // Arka plan rengini burada ayarlayın
+        backgroundColor = UIColor(named: "purple11") // TopCategoryFilterCell setup for bgcolor
     }
 }

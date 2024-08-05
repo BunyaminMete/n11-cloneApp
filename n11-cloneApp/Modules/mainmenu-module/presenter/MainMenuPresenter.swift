@@ -9,7 +9,7 @@ import Foundation
 
 final class MainPagePresenter: MainPageInteractorOutput {
     var interactor: MainPageInteractor?
-    weak var view: MainPageVC?
+    weak var view: MainPageViewController?
 
     func startSlider() {
         interactor?.startSliderTimer()
