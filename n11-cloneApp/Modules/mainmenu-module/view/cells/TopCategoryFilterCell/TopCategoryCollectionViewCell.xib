@@ -3,7 +3,6 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -52,7 +51,6 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" name="purple11"/>
                         <constraints>
                             <constraint firstItem="F3a-RZ-Gu2" firstAttribute="top" secondItem="b3p-ba-yTu" secondAttribute="top" constant="20" id="11z-LW-hbu"/>
                             <constraint firstAttribute="trailing" secondItem="F3a-RZ-Gu2" secondAttribute="trailing" constant="20" id="Iva-j4-K2J"/>
@@ -83,8 +81,5 @@
     </objects>
     <resources>
         <image name="music" width="472.33334350585938" height="472.33334350585938"/>
-        <namedColor name="purple11">
-            <color red="0.34900000691413879" green="0.25099998712539673" blue="0.71399998664855957" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
     </resources>
 </document>

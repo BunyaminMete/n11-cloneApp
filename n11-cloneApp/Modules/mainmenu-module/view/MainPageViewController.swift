@@ -94,6 +94,8 @@ extension MainPageViewController {
         mainCollectionView.register(cellClass: ManuelSliderCollectionViewCell.self)
         mainCollectionView.register(cellClass: ProductCardCollectionViewCell.self)
         
+        mainCollectionView.register(UINib(nibName: "ProductCardHeaderReusableView", bundle: nil),  forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ProductCardHeaderReusableView.headerIdentifier)
+        
         
         
         view.addSubview(mainCollectionView)
@@ -133,7 +135,7 @@ extension MainPageViewController {
             return CompositionalLayoutManager.sharedInstance.createLayoutSection(layoutType: .horizontalImageManuelSlider)
             
         case .productSliderCell:
-            return CompositionalLayoutManager.sharedInstance.createLayoutSection(layoutType: .horizontalProductSlider(hourlyOffer: true))
+            return CompositionalLayoutManager.sharedInstance.createLayoutSection(layoutType: .horizontalProductSlider(hourlyOffer: ProductCardHeaderReusableView.headerIdentifier))
             
         default:
             fatalError("Unhandled cell type")
@@ -188,6 +190,22 @@ extension MainPageViewController: UICollectionViewDelegate, UICollectionViewData
             fatalError("Unhandled cell type")
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionView.elementKindSectionHeader {
+            let productCardHeaderView: ProductCardHeaderReusableView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ProductCardHeaderReusableView.headerIdentifier, for: indexPath) as! ProductCardHeaderReusableView
+            return productCardHeaderView
+        }
+        fatalError("Something wrong with ProductCardHeaderReusableView")
+    }
+    
+//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+//        if kind == UICollectionView.elementKindSectionHeader {
+//            let headerView: MostRecommendedHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: MostRecommendedHeaderView.headerIdentifier, for: indexPath) as! MostRecommendedHeaderView
+//            return headerView
+//        }
+//        fatalError("Unexpected kind")
+//    }
     
     
     

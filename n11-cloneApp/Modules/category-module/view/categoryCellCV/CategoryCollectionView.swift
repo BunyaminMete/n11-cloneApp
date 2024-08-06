@@ -20,12 +20,15 @@ class CategoryCollectionView: UIView {
         return label
     }()
     
+    private var dataSource: UICollectionViewDiffableDataSource<Int, String>!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         setupCollectionView()
         setupTitleLabel()
-        
+        configureDataSource()
+        applyInitialSnapshot()
     }
     
     private func setupCollectionView() {
@@ -35,7 +38,6 @@ class CategoryCollectionView: UIView {
         let nib = UINib(nibName: "CategoryCollectionViewCell", bundle: nil)
         categoryCollectionView.register(nib, forCellWithReuseIdentifier: "CategoryCollectionViewCell")
         categoryCollectionView.delegate = self
-        categoryCollectionView.dataSource = self
         categoryCollectionView.isScrollEnabled = false
     }
     
@@ -49,26 +51,31 @@ class CategoryCollectionView: UIView {
         ])
     }
     
+    private func configureDataSource() {
+        dataSource = UICollectionViewDiffableDataSource<Int, String>(collectionView: categoryCollectionView) { (collectionView, indexPath, item) -> UICollectionViewCell? in
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCollectionViewCell", for: indexPath) as! CategoryCollectionViewCell
+            cell.setupCategoryLabel()
+            cell.categoryLabel.text = item
+            return cell
+        }
+    }
+    
+    private func applyInitialSnapshot() {
+        var snapshot = NSDiffableDataSourceSnapshot<Int, String>()
+        snapshot.appendSections([0])
+        
+        let items = (1..<11).map { "Item \($0)" }
+        snapshot.appendItems(items, toSection: 0)
+        
+        dataSource.apply(snapshot, animatingDifferences: false)
+    }
 }
 
-extension CategoryCollectionView: UICollectionViewDelegate, UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 11  // Toplam 3 satır x 4 hücre
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCollectionViewCell", for: indexPath) as! CategoryCollectionViewCell
-        cell.setupCategoryLabel()
-        return cell
-    }
+extension CategoryCollectionView: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? CategoryCollectionViewCell else {
-            return
+        if let item = dataSource.itemIdentifier(for: indexPath) {
+            print("Selected item's title: \(item)")
         }
-        print("Selected cell's label text: \(cell.categoryLabel.text ?? "No text")")
     }
 }
-
-

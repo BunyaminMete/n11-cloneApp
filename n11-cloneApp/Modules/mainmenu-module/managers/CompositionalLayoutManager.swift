@@ -11,7 +11,7 @@ enum LayoutType {
     case horizontal(isSlider: Bool)
     case horizontalImageSlider
     case horizontalImageManuelSlider
-    case horizontalProductSlider(hourlyOffer: Bool)
+    case horizontalProductSlider(hourlyOffer: String?)
 }
 
 final class CompositionalLayoutManager {
@@ -53,7 +53,7 @@ final class CompositionalLayoutManager {
         } else {
             let largeItemSize = NSCollectionLayoutSize(widthDimension: .absolute(180), heightDimension: .absolute(120))
             let largeItem = NSCollectionLayoutItem(layoutSize: largeItemSize)
-            largeItem.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0)
+            largeItem.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 20, trailing: 0)
             
             let smallItemSize = NSCollectionLayoutSize(widthDimension: .absolute(100), heightDimension: .absolute(120))
             let smallItem = NSCollectionLayoutItem(layoutSize: smallItemSize)
@@ -68,7 +68,7 @@ final class CompositionalLayoutManager {
             let sectionGroup = NSCollectionLayoutGroup.horizontal(layoutSize: sectionGroupSize, subitems: [largeGroup, smallGroup])
             
             let section = NSCollectionLayoutSection(group: sectionGroup)
-            section.contentInsets = NSDirectionalEdgeInsets(top: -5, leading: 20, bottom: -10, trailing: 20)
+            section.contentInsets = NSDirectionalEdgeInsets(top: -5, leading: 0, bottom: -10, trailing: 0)
             section.orthogonalScrollingBehavior = .continuous
             section.decorationItems = [
                 NSCollectionLayoutDecorationItem.background(elementKind: "background")
@@ -108,7 +108,7 @@ final class CompositionalLayoutManager {
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 0, trailing: 20)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 15, trailing: 20)
         
         section.orthogonalScrollingBehavior = .paging
         
@@ -116,7 +116,7 @@ final class CompositionalLayoutManager {
         
     }
     
-    private func createHorizontalProductSliderSection(hourlyOffer: Bool) -> NSCollectionLayoutSection {
+    private func createHorizontalProductSliderSection(hourlyOffer: String?) -> NSCollectionLayoutSection {
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.36), heightDimension: .absolute(290))
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
         
@@ -127,6 +127,20 @@ final class CompositionalLayoutManager {
         
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = NSDirectionalEdgeInsets(top: 15, leading: 0, bottom: 15, trailing: 0)
+        
+        if let hourlyOffer = hourlyOffer, hourlyOffer != "" {
+            let headerSize = NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(1.0),
+                heightDimension: .fractionalHeight(0.065)
+            )
+            let headerItem = NSCollectionLayoutBoundarySupplementaryItem(
+                layoutSize: headerSize,
+                elementKind: UICollectionView.elementKindSectionHeader,
+                alignment: .top            )
+            headerItem.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 15)
+            section.boundarySupplementaryItems = [headerItem]
+        }
+        
         
         section.orthogonalScrollingBehavior = .continuous
         section.decorationItems = [

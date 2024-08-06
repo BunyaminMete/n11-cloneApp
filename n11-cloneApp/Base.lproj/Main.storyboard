@@ -69,7 +69,7 @@
         <!--Sepetim-->
         <scene sceneID="kWE-1x-fy9">
             <objects>
-                <viewController id="boy-wO-4B9" sceneMemberID="viewController">
+                <viewController id="boy-wO-4B9" customClass="BasketViewController" customModule="n11_cloneApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eNw-gb-G3H">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

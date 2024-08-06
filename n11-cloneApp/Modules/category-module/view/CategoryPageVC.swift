@@ -7,10 +7,22 @@
 
 import UIKit
 
-class CategoryPageVC: UIViewController {
+protocol CategoryPageViewProtocol: AnyObject {
+    func displayCategories(_ categories: [String])
+}
+
+class CategoryPageVC: UIViewController, CategoryPageViewProtocol {
+    var presenter: CategoryPagePresenterProtocol!
+    
+    func displayCategories(_ categories: [String]) {
+        print(categories)
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         configureCustomNavigationBar()
         setupDenemeView()
 
