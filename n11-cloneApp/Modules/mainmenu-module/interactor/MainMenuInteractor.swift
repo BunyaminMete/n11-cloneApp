@@ -8,23 +8,13 @@
 
 import Foundation
 
-final class MainPageViewModel {
-    private var sectionList: [SectionModel] = []
-    
-    init() {
-        generateFilterSection()
-        generateSliderSection()
-        generateManuelSliderSection()
-        generateProductCardSection()
-    }
-}
-
-// MARK: - Slider timer events
+// MARK: - MainPageInteractor.swift
 
 final class MainPageInteractor {
     private var sliderTimer: Timer?
     private var currentIndex = 0
     weak var presenter: MainPageInteractorOutput?
+    private let viewModel = MainPageViewModel()
     
     func startSliderTimer() {
         sliderTimer = Timer.scheduledTimer(timeInterval: 4.0, target: self, selector: #selector(scrollToNextItem), userInfo: nil, repeats: true)
@@ -42,70 +32,27 @@ final class MainPageInteractor {
         currentIndex = nextIndex
         presenter?.scrollToItem(at: nextIndex)
     }
-}
-
-
-//MARK: - MainPageViewModel Extensions & Model Definitions
-extension MainPageViewModel {
-    func generateFilterSection() {
-        let filterSectionList: [TopCategoryFilterCellModel] = [
-            TopCategoryFilterCellModel(
-                title: "Tıklamayan Kalmasın",
-                imageName: "n11-cabuk"
-            ),
-            TopCategoryFilterCellModel(
-                title: "Kuponlar",
-                imageName: "discount-coupon"
-            ),TopCategoryFilterCellModel(
-                title: "Yurt Dışından",
-                imageName: "global-delivery"
-            ),
-            TopCategoryFilterCellModel(
-                title: "Sana Özel",
-                imageName: "for-you"
-            ),TopCategoryFilterCellModel(
-                title: "Siparişlerim",
-                imageName: "my-orders"
-            )]
-        sectionList.append(FilterSection(filterSectionList: filterSectionList))
-    }
-    
-    func generateSliderSection() {
-        let sliderSectionList: [ImageSliderCellModel] = [
-            ImageSliderCellModel(imageName: "autoslideritem1"),
-            ImageSliderCellModel(imageName: "autoslideritem2"),
-            ImageSliderCellModel(imageName: "autoslideritem3"),
-            ImageSliderCellModel(imageName: "autoslideritem4"),
-            ImageSliderCellModel(imageName: "autoslideritem5")
-        ]
-        sectionList.append(SliderSection(sliderSectionList: sliderSectionList))
-    }
-    
-    func generateManuelSliderSection(){
-        let manuelSliderSectionList: [ImageManuelSliderCellModel] = [
-            ImageManuelSliderCellModel(imageName: "manuelbanner1"),
-            ImageManuelSliderCellModel(imageName: "manuelbanner2"),
-            ImageManuelSliderCellModel(imageName: "manuelbanner3"),
-            ImageManuelSliderCellModel(imageName: "manuelbanner4")
-        ]
-        sectionList.append(ManuelSliderSection(manuelSliderSectionList: manuelSliderSectionList))
-    }
-    
-    func generateProductCardSection() {
-        let productCardSectionList: [ProductCardCellModel] = [
-            ProductCardCellModel(productImage: "product1", productTitle: "Samsung Monitör", productRate: false, productPrice: 30, freeShipment: false),
-            ProductCardCellModel(productImage: "product2", productTitle: "Telefon", productRate: false, productPrice: 30, freeShipment: false),
-            ProductCardCellModel(productImage: "product1", productTitle: "Beyzbol sopası ile dünya haritası", productRate: false, productPrice: 30, freeShipment: false),
-            ProductCardCellModel(productImage: "product1", productTitle: "Beyzbol sopası ile dünya haritası", productRate: false, productPrice: 30, freeShipment: false)
-        ]
-        sectionList.append(ProductCardSection(productCardSectionList: productCardSectionList))
-    }
     
     func getSectionsCount() -> Int {
-        return sectionList.count
+        return viewModel.getSectionsCount()
     }
     
-    func getSection(at section: Int) -> SectionModel {
-        return sectionList[section]
+    func getSection(at index: Int) -> SectionModel {
+        return viewModel.getSection(at: index)
+    }
+    
+    func getSectionType(for sectionIndex: Int) -> MainPageCellType {
+        switch viewModel.getSection(at: sectionIndex) {
+        case is FilterSection:
+            return .filterCell
+        case is SliderSection:
+            return .imageSliderCell
+        case is ManuelSliderSection:
+            return .imageManuelSliderCell
+        case is ProductCardSection:
+            return .productSliderCell
+        default:
+            fatalError("Unhandled section type")
+        }
     }
 }

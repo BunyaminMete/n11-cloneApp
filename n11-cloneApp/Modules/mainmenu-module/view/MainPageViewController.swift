@@ -7,21 +7,18 @@
 
 import UIKit
 
-final class MainPageViewController: UIViewController, MainPageVC{
+final class MainPageViewController: UIViewController, MainPageVC {
     private var mainCollectionView: UICollectionView!
-    private let viewModel = MainPageViewModel()
     private let presenter = MainPagePresenter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         
-        
         presenter.view = self
         let interactor = MainPageInteractor()
         interactor.presenter = presenter
         presenter.interactor = interactor
-        
         
         configureCustomNavigationBar()
         buildCollectionView()
@@ -29,7 +26,7 @@ final class MainPageViewController: UIViewController, MainPageVC{
         presenter.startSlider()
     }
     
-    deinit{
+    deinit {
         presenter.stopSlider()
     }
     
@@ -43,7 +40,7 @@ final class MainPageViewController: UIViewController, MainPageVC{
         mainCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
     
-    private func configureCustomNavigationBar(){
+    private func configureCustomNavigationBar() {
         let nib = UINib(nibName: "CustomNavigationBar", bundle: nil)
         guard let customNavBar = nib.instantiate(withOwner: self, options: nil).first as? CustomNavigationBar else { return }
         
@@ -74,12 +71,9 @@ final class MainPageViewController: UIViewController, MainPageVC{
             customLabel.trailingAnchor.constraint(equalTo: customNavBar.trailingAnchor),
             customLabel.heightAnchor.constraint(equalToConstant: 40)
         ])
-        
     }
-}
-
-extension MainPageViewController {
-    func buildCollectionView() {
+    
+    private func buildCollectionView() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         mainCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -88,15 +82,12 @@ extension MainPageViewController {
         mainCollectionView.delegate = self
         mainCollectionView.dataSource = self
         
-        
         mainCollectionView.register(cellClass: TopCategoryCollectionViewCell.self)
         mainCollectionView.register(cellClass: ImageSliderCollectionViewCell.self)
         mainCollectionView.register(cellClass: ManuelSliderCollectionViewCell.self)
         mainCollectionView.register(cellClass: ProductCardCollectionViewCell.self)
         
         mainCollectionView.register(UINib(nibName: "ProductCardHeaderReusableView", bundle: nil),  forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: ProductCardHeaderReusableView.headerIdentifier)
-        
-        
         
         view.addSubview(mainCollectionView)
         mainCollectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -108,13 +99,10 @@ extension MainPageViewController {
         ])
     }
     
-    
-    
-    
-    func setCompositionalLayout() {
+    private func setCompositionalLayout() {
         let layout = UICollectionViewCompositionalLayout { [weak self] sectionIndex, env -> NSCollectionLayoutSection? in
             guard let self = self else { return nil }
-            let sectionType = self.viewModel.getSection(at: sectionIndex).cellType
+            let sectionType = self.presenter.getSectionType(for: sectionIndex)
             return self.layoutSection(for: sectionType)
         }
         layout.register(BackgroundView.self, forDecorationViewOfKind: "background")
@@ -127,16 +115,12 @@ extension MainPageViewController {
         switch cellType {
         case .filterCell:
             return CompositionalLayoutManager.sharedInstance.createLayoutSection(layoutType: .horizontal(isSlider: false))
-            
         case .imageSliderCell:
             return CompositionalLayoutManager.sharedInstance.createLayoutSection(layoutType: .horizontalImageSlider)
-            
         case .imageManuelSliderCell:
             return CompositionalLayoutManager.sharedInstance.createLayoutSection(layoutType: .horizontalImageManuelSlider)
-            
         case .productSliderCell:
             return CompositionalLayoutManager.sharedInstance.createLayoutSection(layoutType: .horizontalProductSlider(hourlyOffer: ProductCardHeaderReusableView.headerIdentifier))
-            
         default:
             fatalError("Unhandled cell type")
         }
@@ -145,84 +129,26 @@ extension MainPageViewController {
 
 extension MainPageViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        viewModel.getSectionsCount()
+        presenter.getSectionsCount()
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        viewModel.getSection(at: section).itemCount
+        presenter.getNumberOfItems(in: section)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let section = viewModel.getSection(at: indexPath.section)
-        let item = section.getItem(at: indexPath.row)
-        switch section.cellType {
-            
-        case .filterCell:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TopCategoryCollectionViewCell.reuseIdentifier, for: indexPath) as! TopCategoryCollectionViewCell
-            if let filterModel = item as? TopCategoryFilterCellModel {
-                cell.setup(model: filterModel)
-            }
-            return cell
-            
-        case .imageSliderCell:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageSliderCollectionViewCell.reuseIdentifier, for: indexPath) as! ImageSliderCollectionViewCell
-            if let sliderModel = item as? ImageSliderCellModel {
-                cell.configureSlidedImage(with: sliderModel)
-            }
-            return cell
-            
-        case .imageManuelSliderCell:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ManuelSliderCollectionViewCell.reuseIdentifier, for: indexPath) as!
-            ManuelSliderCollectionViewCell
-            if let manuelSliderModel = item as? ImageManuelSliderCellModel {
-                cell.configureManuelSlider(with: manuelSliderModel)
-            }
-            return cell
-            
-        case .productSliderCell:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProductCardCollectionViewCell.reuseIdentifier, for: indexPath) as! ProductCardCollectionViewCell
-            if let productSliderModel = item as? ProductCardCellModel {
-                cell.configureProductCard(with: productSliderModel)
-            }
-            return cell
-            
-        default:
-            fatalError("Unhandled cell type")
-        }
+        let cell = presenter.getCell(for: indexPath, in: collectionView)
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionHeader {
-            let productCardHeaderView: ProductCardHeaderReusableView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ProductCardHeaderReusableView.headerIdentifier, for: indexPath) as! ProductCardHeaderReusableView
-            return productCardHeaderView
+            return presenter.getHeaderView(for: kind, at: indexPath, in: collectionView)
         }
-        fatalError("Something wrong with ProductCardHeaderReusableView")
+        fatalError("Unexpected kind")
     }
     
-//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-//        if kind == UICollectionView.elementKindSectionHeader {
-//            let headerView: MostRecommendedHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: MostRecommendedHeaderView.headerIdentifier, for: indexPath) as! MostRecommendedHeaderView
-//            return headerView
-//        }
-//        fatalError("Unexpected kind")
-//    }
-    
-    
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let section = viewModel.getSection(at: indexPath.section)
-        let item = section.getItem(at: indexPath.row)
-        switch section.cellType {
-        case .filterCell:
-            print("item : \(item as? TopCategoryFilterCellModel)")
-        case .imageSliderCell:
-            print("item : \(item as? ImageSliderCellModel)")
-        case .imageManuelSliderCell:
-            print("item : \(item as? ImageManuelSliderCellModel)")
-        case .productSliderCell:
-            print("item : \(item as? ProductCardCellModel)")
-        default:
-            fatalError("Unhandled cell type")
-        }
+        presenter.didSelectItem(at: indexPath)
     }
 }
