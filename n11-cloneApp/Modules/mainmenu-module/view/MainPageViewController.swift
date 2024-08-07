@@ -15,15 +15,26 @@ final class MainPageViewController: UIViewController, MainPageVC {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         
+        configureCustomNavigationBar()
+        buildCollectionView()
+        setCompositionalLayout()
+        
         presenter.view = self
         let interactor = MainPageInteractor()
         interactor.presenter = presenter
         presenter.interactor = interactor
-        
-        configureCustomNavigationBar()
-        buildCollectionView()
-        setCompositionalLayout()
         presenter.startSlider()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+            super.viewWillAppear(animated)
+            navigationController?.setNavigationBarHidden(true, animated: animated)
+        }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+
     }
     
     deinit {
@@ -150,5 +161,17 @@ extension MainPageViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         presenter.didSelectItem(at: indexPath)
+    }
+}
+
+extension MainPageViewController: MainPageView {
+    func showProductDetail(product: ProductCardCellModel) {
+        let productDetailVC = ProductDetailViewController()
+        productDetailVC.product = product
+        
+        // Navigation Controller'ı modally sunma
+//        self.present(productDetailVC, animated: true, completion: nil)
+        navigationController?.pushViewController(productDetailVC, animated: true)
+
     }
 }

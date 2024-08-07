@@ -11,15 +11,15 @@ class BasketViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .yellow
+        self.view.backgroundColor = .white
         
         
-        let categoryPageVC = CategoryPageRouter.createModule()
-        addChild(categoryPageVC)
-        categoryPageVC.view.frame = self.view.bounds
-        self.view.addSubview(categoryPageVC.view)
-        categoryPageVC.didMove(toParent: self)
-        // Do any additional setup after loading the view.
+//        let categoryPageVC = CategoryPageRouter.createModule()
+//        addChild(categoryPageVC)
+//        categoryPageVC.view.frame = self.view.bounds
+//        self.view.addSubview(categoryPageVC.view)
+//        categoryPageVC.didMove(toParent: self)
+//        // Do any additional setup after loading the view.
     }
     
 }

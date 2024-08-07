@@ -20,6 +20,7 @@ class GuestAccountVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        self.view.backgroundColor = .white
     }
     
     private func configureUI() {

@@ -107,7 +107,7 @@ final class MainPagePresenter: MainPageInteractorOutput {
         case let productCardSection as ProductCardSection:
             let productCardItem = productCardSection.productCardSectionList[rowIndex]
             print("Selected product card item: \(productCardItem)")
-            
+            view?.showProductDetail(product: productCardItem)
         default:
             print("Unknown section type")
         }

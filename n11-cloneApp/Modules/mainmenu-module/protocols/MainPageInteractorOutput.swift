@@ -16,3 +16,7 @@ protocol MainPageVC: AnyObject {
     func numberOfItemsInSliderSection() -> Int
     func scrollToItem(at index: Int)
 }
+
+protocol MainPageView: AnyObject {
+    func showProductDetail(product: ProductCardCellModel)
+}
