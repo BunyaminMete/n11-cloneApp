@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "n11-ugur-bocegi.png",
+      "filename" : "five-star-empty.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "n11-ugur-bocegi 1.png",
+      "filename" : "five-star-empty 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "n11-ugur-bocegi 2.png",
+      "filename" : "five-star-empty 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

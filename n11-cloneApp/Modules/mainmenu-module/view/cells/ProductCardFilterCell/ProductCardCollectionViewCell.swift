@@ -13,6 +13,7 @@ class ProductCardCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var ProductCardContainerView: UIView!
     @IBOutlet weak var ProductCardImageView: UIImageView!
     @IBOutlet weak var ProductCardLabel: UILabel!
+    @IBOutlet weak var productStarRating: UIImageView!
     @IBOutlet weak var freeShipmentLabel: UILabel!
     @IBOutlet weak var productCardPriceLabel: UILabel!
     @IBOutlet weak var productCardImageContainer: UIView!
@@ -49,6 +50,9 @@ class ProductCardCollectionViewCell: UICollectionViewCell {
         ProductCardContainerView.backgroundColor = .white
         ProductCardImageView.image = UIImage(named: model.productImage)
         ProductCardLabel.text = model.productTitle
+        if model.productRate == true {
+            productStarRating.image = UIImage(named: "five-star-empty")
+        }
         
     }
 }

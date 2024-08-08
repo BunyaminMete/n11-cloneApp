@@ -10,23 +10,26 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ProductCardCollectionViewCell" customModule="n11_cloneApp" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="125" height="228"/>
+            <rect key="frame" x="0.0" y="0.0" width="125" height="197"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="125" height="228"/>
+                <rect key="frame" x="0.0" y="0.0" width="125" height="197"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dh9-7m-q3K">
-                        <rect key="frame" x="0.0" y="0.0" width="125" height="228"/>
+                        <rect key="frame" x="0.0" y="0.0" width="125" height="197"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ro7-pg-mll">
-                                <rect key="frame" x="0.0" y="0.0" width="125" height="98"/>
+                                <rect key="frame" x="0.0" y="0.0" width="125" height="67"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DOH-pY-KgK">
-                                        <rect key="frame" x="2" y="0.0" width="121" height="98"/>
+                                        <rect key="frame" x="2" y="0.0" width="121" height="67"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HrA-PK-Mgk">
-                                        <rect key="frame" x="0.0" y="77" width="125" height="21"/>
+                                        <rect key="frame" x="0.0" y="42" width="125" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="25" id="MWC-O7-Rif"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -34,34 +37,40 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="HrA-PK-Mgk" firstAttribute="centerX" secondItem="DOH-pY-KgK" secondAttribute="centerX" id="60o-g9-n68"/>
                                     <constraint firstAttribute="trailing" secondItem="DOH-pY-KgK" secondAttribute="trailing" constant="2" id="71g-Qt-PAU"/>
-                                    <constraint firstAttribute="bottom" secondItem="HrA-PK-Mgk" secondAttribute="bottom" id="KM8-S2-4iX"/>
                                     <constraint firstItem="DOH-pY-KgK" firstAttribute="leading" secondItem="ro7-pg-mll" secondAttribute="leading" constant="2" id="Llj-25-KG5"/>
                                     <constraint firstAttribute="bottom" secondItem="DOH-pY-KgK" secondAttribute="bottom" id="eDn-rq-5UP"/>
-                                    <constraint firstAttribute="trailing" secondItem="HrA-PK-Mgk" secondAttribute="trailing" id="gjr-oB-TT0"/>
-                                    <constraint firstItem="HrA-PK-Mgk" firstAttribute="leading" secondItem="ro7-pg-mll" secondAttribute="leading" id="hL0-zp-J2l"/>
+                                    <constraint firstItem="HrA-PK-Mgk" firstAttribute="bottom" secondItem="DOH-pY-KgK" secondAttribute="bottom" id="mjO-CO-bJe"/>
+                                    <constraint firstItem="HrA-PK-Mgk" firstAttribute="leading" secondItem="ro7-pg-mll" secondAttribute="leading" id="nC8-H5-dqD"/>
                                     <constraint firstItem="DOH-pY-KgK" firstAttribute="top" secondItem="ro7-pg-mll" secondAttribute="top" id="vi1-nY-zGy"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Si-JD-p3C">
-                                <rect key="frame" x="0.0" y="98" width="125" height="80"/>
+                                <rect key="frame" x="0.0" y="67" width="125" height="80"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ysu-JS-Pq5">
-                                        <rect key="frame" x="5" y="5" width="120" height="21"/>
+                                        <rect key="frame" x="5" y="5" width="115" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="five-star-empty" translatesAutoresizingMaskIntoConstraints="NO" id="S1G-2j-kTj">
+                                        <rect key="frame" x="0.0" y="26" width="66.666666666666671" height="24"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="Ysu-JS-Pq5" firstAttribute="leading" secondItem="6Si-JD-p3C" secondAttribute="leading" constant="5" id="91N-2T-akb"/>
-                                    <constraint firstAttribute="trailing" secondItem="Ysu-JS-Pq5" secondAttribute="trailing" id="ZYE-ne-8d2"/>
+                                    <constraint firstItem="S1G-2j-kTj" firstAttribute="top" secondItem="Ysu-JS-Pq5" secondAttribute="bottom" id="Vok-zv-qxd"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ysu-JS-Pq5" secondAttribute="trailing" constant="5" id="ZYE-ne-8d2"/>
+                                    <constraint firstAttribute="bottom" secondItem="S1G-2j-kTj" secondAttribute="bottom" constant="30" id="ZeM-uy-omN"/>
                                     <constraint firstItem="Ysu-JS-Pq5" firstAttribute="top" secondItem="6Si-JD-p3C" secondAttribute="top" constant="5" id="jb7-QS-9b0"/>
+                                    <constraint firstItem="S1G-2j-kTj" firstAttribute="leading" secondItem="6Si-JD-p3C" secondAttribute="leading" id="jyh-pd-n9q"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jbh-oZ-oaU">
-                                <rect key="frame" x="0.0" y="178" width="125" height="50"/>
+                                <rect key="frame" x="0.0" y="147" width="125" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="str-CM-Eig">
                                         <rect key="frame" x="10" y="19" width="42" height="21"/>
@@ -102,7 +111,7 @@
                 <constraint firstItem="dh9-7m-q3K" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Sen-JP-fBR"/>
                 <constraint firstAttribute="trailing" secondItem="dh9-7m-q3K" secondAttribute="trailing" id="ap3-e3-Drm"/>
             </constraints>
-            <size key="customSize" width="125" height="228"/>
+            <size key="customSize" width="125" height="197"/>
             <connections>
                 <outlet property="ProductCardContainerView" destination="dh9-7m-q3K" id="n2m-db-fMT"/>
                 <outlet property="ProductCardImageView" destination="DOH-pY-KgK" id="uz5-Y6-etQ"/>
@@ -112,8 +121,12 @@
                 <outlet property="productCardImageContainer" destination="ro7-pg-mll" id="NgC-mC-kzx"/>
                 <outlet property="productCardPriceLabel" destination="str-CM-Eig" id="85p-i9-teI"/>
                 <outlet property="productCardPriceLabelContainer" destination="jbh-oZ-oaU" id="JAe-bF-5Kz"/>
+                <outlet property="productStarRating" destination="S1G-2j-kTj" id="Olk-Rr-jJ2"/>
             </connections>
-            <point key="canvasLocation" x="-318.32061068702291" y="-11.971830985915494"/>
+            <point key="canvasLocation" x="-318.32061068702291" y="-12.323943661971832"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="five-star-empty" width="66.666664123535156" height="66.666664123535156"/>
+    </resources>
 </document>

@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Icon-20@3x.png",
+      "filename" : "img-samsung-telefon.jpg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Icon-20@3x 1.png",
+      "filename" : "img-samsung-telefon 1.jpg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Icon-20@3x 2.png",
+      "filename" : "img-samsung-telefon 2.jpg",
       "idiom" : "universal",
       "scale" : "3x"
     }

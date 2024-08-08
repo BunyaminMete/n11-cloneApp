@@ -117,7 +117,7 @@ final class CompositionalLayoutManager {
     }
     
     private func createHorizontalProductSliderSection(hourlyOffer: String?) -> NSCollectionLayoutSection {
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.36), heightDimension: .absolute(290))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.36), heightDimension: .absolute(280))
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
         
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
